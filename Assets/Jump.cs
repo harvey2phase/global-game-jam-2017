@@ -16,8 +16,10 @@ public class Jump : MonoBehaviour {
     void FixedUpdate () {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1000f, 1 << 8);
 
+        Debug.Log(hit.distance);
+
         // grounded?
-        if (hit.distance < 2f)
+        if (hit.distance < 3f)
             grounded = true;
         else
             grounded = false;
@@ -25,7 +27,7 @@ public class Jump : MonoBehaviour {
 		Debug.Log (grounded);
 
         // jump
-        if (Input.GetKeyDown (KeyCode.UpArrow) && grounded)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
             GetComponent<Rigidbody2D> ().AddForce (transform.up * 2000);
 
         // move left
