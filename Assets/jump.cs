@@ -2,22 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class script : MonoBehaviour {
+public class jump : MonoBehaviour {
 	
-	bool isKeyLeft, isKeyRight;
+	bool isKeyLeft, isKeyRight, grounded, jumped;
 
 	// Use this for initialization
 	void Start () {
 		isKeyLeft = false;
 		isKeyRight = false;
+		grounded = true;
+		jumped = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		// grounded?
+		if(GetComponent<Rigidbody2D>().velocity.y == 0)
+			grounded = true;
+		if(GetComponent<Rigidbody2D>().velocity.y != 0)
+			grounded = false;
+
+		float Y = GetComponent<Rigidbody2D> ().velocity.y;
+
 		// jump
-		if (Input.GetKeyDown(KeyCode.UpArrow))
-			GetComponent<Rigidbody2D> ().AddForce (transform.up * 500);
+		if (Input.GetKeyDown (KeyCode.UpArrow) && Y < 0.000000001) {
+			GetComponent<Rigidbody2D> ().AddForce (transform.up * 2000);
+		}
 		
 		// move left
 		if (Input.GetKeyDown (KeyCode.LeftArrow))
