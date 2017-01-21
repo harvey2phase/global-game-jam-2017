@@ -34,7 +34,7 @@ public class WaveAttackVictim : MonoBehaviour {
 
             //These are dummy values as well, also distance travelled should de
             Debug.Log(distanceMultiplier);
-            victim.GetComponent<Rigidbody2D>().AddForce(Vector2.up * distanceMultiplier *10);
+            victim.GetComponent<Rigidbody2D>().AddForce(Vector2.up * distanceMultiplier * 10);
             victim.GetComponent<Rigidbody2D>().AddForce(Vector2.right * distanceMultiplier * directionOfMovement * 10);
         }
 	}

@@ -11,8 +11,7 @@ public class BaseController : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
-        rigedBod = GetComponent<Rigidbody2D>();
-        rigedBod.gravityScale = 0f;
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
 	}
 	
 	// Update is called once per frame
