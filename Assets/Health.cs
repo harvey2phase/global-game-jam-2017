@@ -3,36 +3,76 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour {
+    public int health; //Health is out of 100
+    bool powerUpIsActive = false;
 
-    const int MAX_HEALTH = 100;
+    // Use this for initialization
+    void Start() {
+        health = 100;
+        powerUpIsActive = false;
+    }
 
-    public int health;
+    // Update is called once per frame
+    void Update() {
 
-    bool IncrementHealth(int value)
+    }
+    /**
+     * Changes the health by the difference.
+     * Returns the new health level.
+     */
+     
+
+    public int changeHealth(int difference)
     {
-        health += value;
-        if (health > MAX_HEALTH)
+        health += difference;
+        moderateHealth(); //Make sure health is in correct range
+        return health;
+    } 
+
+    /**
+     * Increases health by 10
+     */
+    public int incrementHealth()
+    {
+        health += 10;
+        moderateHealth(); //Make sure health is never greater than 100
+        return health;
+    }
+    /**
+     * Decreases health by 10
+     * Returns new health level
+     * Health never goes below 0
+     */
+    public int decrementHealth()
+    {
+        health -= 10;
+        moderateHealth(); //Make sure health is never less than 0
+        return health;
+    }
+    /**
+     * Make sure health is in a valid range
+     * Takes power-ups into consideration
+     */
+    public bool moderateHealth()
+    {
+        if (powerUpIsActive)
         {
-            health = MAX_HEALTH;
-            return false;
+            if (health > 120)
+            {
+                health = 120;
+            }
+        }
+        else
+        {
+            if (health > 100)
+            {
+                health = 100;
+            }
+        }
+        if (health < 0)
+        {
+            health = 0;
         }
         return true;
     }
-
-
-    bool DecrementHealth(int value)
-    {
-        health -= value;
-        return (health <= 0);
-    }
-
-    // Use this for initialization
-    void Start () {
-        health = 100;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

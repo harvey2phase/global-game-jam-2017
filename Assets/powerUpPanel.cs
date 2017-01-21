@@ -21,4 +21,9 @@ public class powerUpPanel : MonoBehaviour {
         newVector.y = defaultAnchorMin.y;
         powerUpRect.anchorMin = newVector;
     }
+
+    public endHealthPowerUp()
+    {
+        set
+    }
 }

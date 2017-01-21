@@ -9,10 +9,12 @@ public class HealthCounter : MonoBehaviour {
     Vector2 defaultAnchorMax;
 
     RectTransform rect;
+    RectTransform powerUpRect;
 
     // Use this for initialization
     void Start () {
         rect = GetComponent<RectTransform>();
+        powerUpRect = GetComponent<RectTransform>
         defaultAnchorMin = rect.anchorMin;
         defaultAnchorMax = rect.anchorMax;
 
