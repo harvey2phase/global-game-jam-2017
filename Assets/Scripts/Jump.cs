@@ -6,6 +6,8 @@ public class Jump : MonoBehaviour {
 
     bool grounded, jumped;
 
+    public float JumpForce;
+
     SpriteRenderer turtle;
 
     // Use this for initialization
@@ -30,7 +32,7 @@ public class Jump : MonoBehaviour {
 
         // jump
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
-			GetComponent<Rigidbody2D> ().AddForce ((Vector2.up * 1000));
+			GetComponent<Rigidbody2D> ().AddForce ((Vector2.up * JumpForce));
 
         // move left
         if (Input.GetKey(KeyCode.LeftArrow)) {
