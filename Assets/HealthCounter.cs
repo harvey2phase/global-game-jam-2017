@@ -15,6 +15,7 @@ public class HealthCounter : MonoBehaviour {
         rect = GetComponent<RectTransform>();
         defaultAnchorMin = rect.anchorMin;
         defaultAnchorMax = rect.anchorMax;
+
     }
 
     // Update is called once per frame
