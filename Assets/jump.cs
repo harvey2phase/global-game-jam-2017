@@ -3,47 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Jump : MonoBehaviour {
-    
-    bool isKeyLeft, isKeyRight, grounded, jumped;
+    public GameObject whatIsGround;
+
+    bool grounded, jumped;
 
     // Use this for initialization
     void Start () {
-        isKeyLeft = false;
-        isKeyRight = false;
         grounded = true;
         jumped = false;
     }
     
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
+        float Y = GetComponent<Rigidbody2D>().velocity.y;
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1000f, 1 << 8);
 
         // grounded?
-        if(GetComponent<Rigidbody2D>().velocity.y == 0)
+        if (hit.distance < 2f)
             grounded = true;
-        if(GetComponent<Rigidbody2D>().velocity.y != 0)
+        else
             grounded = false;
 
-        float Y = GetComponent<Rigidbody2D> ().velocity.y;
-
         // jump
-        if (Input.GetKeyDown (KeyCode.UpArrow) && Y < 0.000000001) {
+        if (Input.GetKeyDown (KeyCode.UpArrow) && grounded) {
             GetComponent<Rigidbody2D> ().AddForce (transform.up * 2000);
         }
-        
+
         // move left
-        if (Input.GetKeyDown (KeyCode.LeftArrow))
-            isKeyLeft = true;
-        if (Input.GetKeyUp (KeyCode.LeftArrow))
-            isKeyLeft = false;
-        if (isKeyLeft == true)
-            this.gameObject.transform.Translate (-(float).25, 0, 0);
+        if (Input.GetKey(KeyCode.LeftArrow))
+            gameObject.transform.Translate (-.5f, 0, 0);
 
         // move right
-        if (Input.GetKeyDown (KeyCode.RightArrow))
-            isKeyRight = true;
-        if (Input.GetKeyUp (KeyCode.RightArrow))
-            isKeyRight = false;
-        if (isKeyRight == true)
-            this.gameObject.transform.Translate ((float).25, 0, 0);
+        if (Input.GetKey(KeyCode.RightArrow))
+            gameObject.transform.Translate(.5f, 0, 0);
+
+        NormalizeSlope();
+    }
+
+    void NormalizeSlope()
+    {
+        // Attempt vertical normalization
+        if (grounded)
+        {
+            int layerMask = 1 << 8;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1000f, layerMask);
+
+            if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f)
+            {
+                Transform pos = GetComponent<Transform>();
+                Rigidbody2D body = GetComponent<Rigidbody2D>();
+
+                Debug.Log(hit.normal.x);
+
+                float friction = 1f;
+
+                // Apply the opposite force against the slope force 
+                // You will need to provide your own slopeFriction to stabalize movement
+                body.velocity = new Vector2(body.velocity.x - (hit.normal.x * friction), body.velocity.y);
+
+                //Move Player up or down to compensate for the slope below them
+            }
+        }
     }
 }
