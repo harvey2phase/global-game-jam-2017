@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Jump : MonoBehaviour {
-    public GameObject whatIsGround;
 
     bool grounded, jumped;
 
@@ -22,6 +21,8 @@ public class Jump : MonoBehaviour {
             grounded = true;
         else
             grounded = false;
+
+		Debug.Log (grounded);
 
         // jump
         if (Input.GetKeyDown (KeyCode.UpArrow) && grounded)
