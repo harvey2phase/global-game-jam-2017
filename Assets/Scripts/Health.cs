@@ -7,26 +7,18 @@ public class Health : MonoBehaviour {
     public int health; //Health is out of 100
     public bool powerUpIsActive = false;
 
+    public CanvasRenderer LosingScreen;
+
     // Use this for initialization
     void Start() {
         health = 100;
         powerUpIsActive = false;
+        LosingScreen.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            decrementHealth();
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            incrementHealth();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            getPowerUp();
-        }
+
     }
     /**
      * Changes the health by the difference.
@@ -97,9 +89,12 @@ public class Health : MonoBehaviour {
                 health = 100;
             }
         }
-        if (health < 0)
+
+        Debug.Log(health);
+
+        if (health <= 0)
         {
-            health = 0;
+            LosingScreen.gameObject.SetActive(true);
         }
         return true;
     }
