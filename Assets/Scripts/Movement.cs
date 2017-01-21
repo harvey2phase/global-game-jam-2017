@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jump : MonoBehaviour {
+public class Movement : MonoBehaviour {
 
     bool grounded, jumped;
 

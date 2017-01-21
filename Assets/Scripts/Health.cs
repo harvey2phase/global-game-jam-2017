@@ -95,6 +95,7 @@ public class Health : MonoBehaviour {
         if (health <= 0)
         {
             LosingScreen.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
         return true;
     }
