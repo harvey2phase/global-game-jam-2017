@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour {
+    public PowerUpPanel powerUpPanel;
     public int health; //Health is out of 100
-    bool powerUpIsActive = false;
+    public bool powerUpIsActive = false;
 
     // Use this for initialization
     void Start() {
@@ -14,14 +15,23 @@ public class Health : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            decrementHealth();
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            incrementHealth();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            getPowerUp();
+        }
     }
     /**
      * Changes the health by the difference.
      * Returns the new health level.
      */
-     
-
     public int changeHealth(int difference)
     {
         health += difference;
@@ -49,6 +59,18 @@ public class Health : MonoBehaviour {
         moderateHealth(); //Make sure health is never less than 0
         return health;
     }
+
+    /**
+     * Increases health to 120 and renders the extra health bar
+     */
+     public bool getPowerUp()
+    {
+        powerUpIsActive = true;
+        health = 120;
+        powerUpPanel.gameObject.SetActive(true);
+        return true;
+    }
+   
     /**
      * Make sure health is in a valid range
      * Takes power-ups into consideration
@@ -60,6 +82,12 @@ public class Health : MonoBehaviour {
             if (health > 120)
             {
                 health = 120;
+            }
+            if(health <= 100)
+            {
+                //Makes the extra health box dissappear and changes the powerUpHealth bool
+                powerUpPanel.gameObject.SetActive(false);
+                powerUpIsActive = false;
             }
         }
         else
