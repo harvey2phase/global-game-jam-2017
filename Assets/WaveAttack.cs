@@ -9,16 +9,16 @@ public class WaveAttack : MonoBehaviour {
         private set;
     }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         isFiring = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+    
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKey(KeyCode.Space))
         {
             isFiring = true;
         }
-	}
+    }
 }

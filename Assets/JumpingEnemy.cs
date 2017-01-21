@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JumpingEnemy : BaseEnemy {
+    GameObject victim;
 
     float timeUntilJump;
 
@@ -12,6 +13,7 @@ public class JumpingEnemy : BaseEnemy {
     void Start () {
         grounded = true;
         timeUntilJump = Random.value * 10;
+        victim = null;
     }
     
     // Update is called once per frame
@@ -74,9 +76,18 @@ public class JumpingEnemy : BaseEnemy {
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        victim = collision.gameObject;
+    }
     public override void Attack()
     {
+        if(victim != null)
+        {
+            Health hp = victim.GetComponent<Health>();
 
+            
+        }
     }
 
     public override void PlayerInRange()
