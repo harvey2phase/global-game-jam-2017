@@ -46,11 +46,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BruteForceController.cs" />
+     <Compile Include="Assets\BaseEnemy.cs" />
+     <Compile Include="Assets\BoxController.cs" />
      <Compile Include="Assets\Health.cs" />
      <Compile Include="Assets\HealthCounter.cs" />
      <Compile Include="Assets\JoshControls.cs" />
-     <Compile Include="Assets\jump.cs" />
+     <Compile Include="Assets\Jump.cs" />
+     <Compile Include="Assets\JumpingEnemy.cs" />
+     <Compile Include="Assets\WaveAttack.cs" />
+     <Compile Include="Assets\WaveAttackVictim.cs" />
+     <Compile Include="Assets\powerUpPanel.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
