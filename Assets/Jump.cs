@@ -6,17 +6,19 @@ public class Jump : MonoBehaviour {
 
     bool grounded, jumped;
 
+    SpriteRenderer turtle;
+
     // Use this for initialization
     void Start () {
         grounded = true;
         jumped = false;
+
+        turtle = GetComponent<SpriteRenderer>();
     }
     
     // Update is called once per frame
     void FixedUpdate () {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1000f, 1 << 8);
-
-        Debug.Log(hit.distance);
 
         // grounded?
         if (hit.distance < 3f)
@@ -24,7 +26,7 @@ public class Jump : MonoBehaviour {
         else
             grounded = false;
 
-		Debug.Log (grounded);
+        
 
         // jump
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
@@ -32,11 +34,17 @@ public class Jump : MonoBehaviour {
 
         // move left
         if (Input.GetKey(KeyCode.LeftArrow))
-            gameObject.transform.Translate (-.5f, 0, 0);
+        {
+            gameObject.transform.Translate(-.5f, 0, 0);
+            turtle.flipX = true;
+        }
 
         // move right
         if (Input.GetKey(KeyCode.RightArrow))
+        {
             gameObject.transform.Translate(.5f, 0, 0);
+            turtle.flipX = false;
+        }
 
         NormalizeSlope();
     }
@@ -54,9 +62,7 @@ public class Jump : MonoBehaviour {
                 Transform pos = GetComponent<Transform>();
                 Rigidbody2D body = GetComponent<Rigidbody2D>();
 
-                Debug.Log(hit.normal.x);
-
-                float friction = 1f;
+                float friction = 2f;
 
                 // Apply the opposite force against the slope force 
                 // You will need to provide your own slopeFriction to stabalize movement
