@@ -20,9 +20,9 @@ public class PendulumController : MonoBehaviour
     void Update()
     {
         currentTime += Time.deltaTime;
-        if ((int)currentTime == 2)
+        if ((int)currentTime == 1)
         {
-            Pendulum.AddForce(Vector2.right * 1.20f);
+            Pendulum.AddRelativeForce(Vector2.right * 100f);
         }
     }
 }
