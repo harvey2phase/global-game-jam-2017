@@ -30,18 +30,16 @@ public class Jump : MonoBehaviour {
 
         // jump
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
-            GetComponent<Rigidbody2D> ().AddForce (transform.up * 2000);
+			GetComponent<Rigidbody2D> ().AddForce ((Vector2.up * 1000));
 
         // move left
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
+        if (Input.GetKey(KeyCode.LeftArrow)) {
             gameObject.transform.Translate(-.5f, 0, 0);
             turtle.flipX = true;
         }
 
         // move right
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
+        if (Input.GetKey(KeyCode.RightArrow)) {
             gameObject.transform.Translate(.5f, 0, 0);
             turtle.flipX = false;
         }
