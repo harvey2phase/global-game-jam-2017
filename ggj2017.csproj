@@ -82,9 +82,9 @@
     <Compile Include="Assets\JoshControls.cs" />
     <Compile Include="Assets\Jump.cs" />
     <Compile Include="Assets\JumpingEnemy.cs" />
+    <Compile Include="Assets\PowerUpPanel.cs" />
     <Compile Include="Assets\WaveAttack.cs" />
     <Compile Include="Assets\WaveAttackVictim.cs" />
-    <Compile Include="Assets\powerUpPanel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

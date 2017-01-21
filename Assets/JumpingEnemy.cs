@@ -28,6 +28,8 @@ public class JumpingEnemy : BaseEnemy {
 
         Move();
 
+        Attack();
+
         timeUntilJump -= Time.deltaTime;
 
         NormalizeSlope();
@@ -79,9 +81,12 @@ public class JumpingEnemy : BaseEnemy {
     private void OnCollisionEnter(Collision collision)
     {
         victim = collision.gameObject;
+
+        Debug.Log("ohdang");
     }
     public override void Attack()
     {
+        Debug.Log(victim);
         if(victim != null)
         {
             Health hp = victim.GetComponent<Health>();
