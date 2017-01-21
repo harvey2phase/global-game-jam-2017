@@ -34,9 +34,9 @@ public class Health : MonoBehaviour {
     /**
      * Increases health by 10
      */
-    public int incrementHealth()
+    public int incrementHealth(int amount = 10)
     {
-        health += 10;
+        health += amount;
         moderateHealth(); //Make sure health is never greater than 100
         return health;
     }
@@ -45,9 +45,9 @@ public class Health : MonoBehaviour {
      * Returns new health level
      * Health never goes below 0
      */
-    public int decrementHealth()
+    public int decrementHealth(int amount = 10)
     {
-        health -= 10;
+        health -= amount;
         moderateHealth(); //Make sure health is never less than 0
         return health;
     }

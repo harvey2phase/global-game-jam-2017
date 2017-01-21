@@ -5,6 +5,8 @@ using UnityEngine;
 public class JumpingEnemy : BaseEnemy {
     GameObject victim;
 
+    public float JumpInterval = 5f;
+
     float timeUntilJump;
 
     bool grounded;
@@ -12,7 +14,7 @@ public class JumpingEnemy : BaseEnemy {
     // Use this for initialization
     void Start () {
         grounded = true;
-        timeUntilJump = Random.value * 5;
+        timeUntilJump = Random.value * JumpInterval;
         victim = null;
     }
     
@@ -58,7 +60,7 @@ public class JumpingEnemy : BaseEnemy {
         if(timeUntilJump <= 0)
         {
             GetComponent<Rigidbody2D>().AddForce(transform.up * 2000);
-            timeUntilJump = Random.value * 5;
+            timeUntilJump = Random.value * JumpInterval;
         }
     }
 
