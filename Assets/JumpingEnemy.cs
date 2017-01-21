@@ -12,7 +12,7 @@ public class JumpingEnemy : BaseEnemy {
     // Use this for initialization
     void Start () {
         grounded = true;
-        timeUntilJump = Random.value * 10;
+        timeUntilJump = Random.value * 5;
         victim = null;
     }
     
@@ -42,6 +42,11 @@ public class JumpingEnemy : BaseEnemy {
         victim = collision.gameObject;
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        victim = null;
+    }
+
     public override void Move()
     {
         GetComponent<Transform>().Translate(-.2f, 0, 0);
@@ -53,7 +58,7 @@ public class JumpingEnemy : BaseEnemy {
         if(timeUntilJump <= 0)
         {
             GetComponent<Rigidbody2D>().AddForce(transform.up * 2000);
-            timeUntilJump = Random.value * 10;
+            timeUntilJump = Random.value * 5;
         }
     }
 
@@ -82,7 +87,6 @@ public class JumpingEnemy : BaseEnemy {
     }
     public override void Attack()
     {
-        Debug.Log(victim);
         if(victim != null)
         {
             Health hp = victim.GetComponent<Health>();
@@ -91,8 +95,6 @@ public class JumpingEnemy : BaseEnemy {
             {
                 hp.decrementHealth();
             }
-
-            victim = null;
         }
     }
 
