@@ -90,8 +90,6 @@ public class Health : MonoBehaviour {
             }
         }
 
-        Debug.Log(health);
-
         if (health <= 0)
         {
             LosingScreen.gameObject.SetActive(true);
