@@ -13,7 +13,7 @@ public class CabbagesBarController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        int element = (Player.currentCabbages - 1);
+        /*int element = (Player.currentCabbages - 1);
         if (Player.pickupCabbage() && element != (Player.maxCabbages - 1))
         {
             Cabbages[element].enabled = true;
@@ -21,6 +21,6 @@ public class CabbagesBarController : MonoBehaviour {
         else if(Player.throwCabbage())
         {
             Cabbages[element].enabled = false;
-        }
+        }*/
 	}
 }
