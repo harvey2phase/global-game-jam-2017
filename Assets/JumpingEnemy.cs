@@ -6,16 +6,29 @@ public class JumpingEnemy : BaseEnemy {
 
     float timeUntilJump;
 
+    bool grounded;
+
     // Use this for initialization
     void Start () {
+        grounded = true;
         timeUntilJump = Random.value * 10;
     }
     
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1000f, 1 << 8);
+
+        // grounded?
+        if (hit.distance < 2f)
+            grounded = true;
+        else
+            grounded = false;
+
         Move();
 
         timeUntilJump -= Time.deltaTime;
+
+        NormalizeSlope();
 
         Jump();
     }
@@ -32,6 +45,32 @@ public class JumpingEnemy : BaseEnemy {
         {
             GetComponent<Rigidbody2D>().AddForce(transform.up * 2000);
             timeUntilJump = Random.value * 10;
+        }
+    }
+
+    void NormalizeSlope()
+    {
+        // Attempt vertical normalization
+        if (grounded)
+        {
+            int layerMask = 1 << 8;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1000f, layerMask);
+
+            if (hit.collider != null && Mathf.Abs(hit.normal.x) > 0.1f)
+            {
+                Transform pos = GetComponent<Transform>();
+                Rigidbody2D body = GetComponent<Rigidbody2D>();
+
+                Debug.Log(hit.normal.x);
+
+                float friction = 2f;
+
+                // Apply the opposite force against the slope force 
+                // You will need to provide your own slopeFriction to stabalize movement
+                body.velocity = new Vector2(body.velocity.x - (hit.normal.x * friction), body.velocity.y);
+
+                //Move Player up or down to compensate for the slope below them
+            }
         }
     }
 

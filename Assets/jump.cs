@@ -15,8 +15,6 @@ public class Jump : MonoBehaviour {
     
     // Update is called once per frame
     void FixedUpdate () {
-        float Y = GetComponent<Rigidbody2D>().velocity.y;
-
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1000f, 1 << 8);
 
         // grounded?
@@ -26,9 +24,8 @@ public class Jump : MonoBehaviour {
             grounded = false;
 
         // jump
-        if (Input.GetKeyDown (KeyCode.UpArrow) && grounded) {
+        if (Input.GetKeyDown (KeyCode.UpArrow) && grounded)
             GetComponent<Rigidbody2D> ().AddForce (transform.up * 2000);
-        }
 
         // move left
         if (Input.GetKey(KeyCode.LeftArrow))
