@@ -37,6 +37,11 @@ public class JumpingEnemy : BaseEnemy {
         Jump();
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        victim = collision.gameObject;
+    }
+
     public override void Move()
     {
         GetComponent<Transform>().Translate(-.2f, 0, 0);
@@ -65,8 +70,6 @@ public class JumpingEnemy : BaseEnemy {
                 Transform pos = GetComponent<Transform>();
                 Rigidbody2D body = GetComponent<Rigidbody2D>();
 
-                Debug.Log(hit.normal.x);
-
                 float friction = 2f;
 
                 // Apply the opposite force against the slope force 
@@ -76,13 +79,6 @@ public class JumpingEnemy : BaseEnemy {
                 //Move Player up or down to compensate for the slope below them
             }
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        victim = collision.gameObject;
-
-        Debug.Log("ohdang");
     }
     public override void Attack()
     {
@@ -95,6 +91,8 @@ public class JumpingEnemy : BaseEnemy {
             {
                 hp.decrementHealth();
             }
+
+            victim = null;
         }
     }
 
