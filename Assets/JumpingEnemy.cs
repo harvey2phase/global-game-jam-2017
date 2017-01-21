@@ -86,7 +86,10 @@ public class JumpingEnemy : BaseEnemy {
         {
             Health hp = victim.GetComponent<Health>();
 
-            
+            if(hp != null)
+            {
+                hp.decrementHealth();
+            }
         }
     }
 
