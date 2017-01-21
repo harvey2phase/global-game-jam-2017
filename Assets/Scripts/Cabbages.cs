@@ -23,6 +23,16 @@ public class Cabbages : MonoBehaviour {
     {
         currentCabbages--;
     }
+
+    public void throwCabbage()
+    {
+
+    }
+
+    public void pickupCabbage()
+    {
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
