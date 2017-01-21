@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class powerUpPanel : MonoBehaviour {
+public class PowerUpPanel : MonoBehaviour {
     public Health health;
     RectTransform powerUpRect;
     Vector2 defaultAnchorMin;
@@ -22,8 +22,11 @@ public class powerUpPanel : MonoBehaviour {
         powerUpRect.anchorMin = newVector;
     }
 
-    public endHealthPowerUp()
+    public bool endHealthPowerUp()
     {
-        set
+        /*
+        powerUpRect.Set(defaultAnchorMax.y, defaultAnchorMin.y);
+        */return true;
+        
     }
 }

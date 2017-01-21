@@ -14,7 +14,7 @@ public class HealthCounter : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rect = GetComponent<RectTransform>();
-        powerUpRect = GetComponent<RectTransform>
+        powerUpRect = GetComponent<RectTransform>();
         defaultAnchorMin = rect.anchorMin;
         defaultAnchorMax = rect.anchorMax;
 
