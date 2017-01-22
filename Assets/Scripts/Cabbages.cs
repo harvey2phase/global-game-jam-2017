@@ -55,6 +55,16 @@ public class Cabbages : MonoBehaviour {
             decrementCabbages();
 
             //Launch the cabbage
+            SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+            bool direction = sprite.flipX; //If true, the player is facing left
+                if (direction)
+                {
+                    Speed = Mathf.Abs(Speed)*(-1);
+                }
+            else
+            {
+                Speed = Mathf.Abs(Speed);
+            }
             var clone = Instantiate(cabbage, transform.position, Quaternion.Euler(0, 0, 90));//(transform.rotation));
             clone.GetComponent<Rigidbody2D>().AddForce(new Vector2(Speed, 0));
             Destroy(clone, 2);
