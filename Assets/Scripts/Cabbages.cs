@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Cabbages : MonoBehaviour {
     public const int MAX_CABBAGES = 5;
-
+    public GravityWave gravityWave;
     public int currentCabbages;
 
 	// Use this for initialization
@@ -45,6 +45,7 @@ public class Cabbages : MonoBehaviour {
         else {
             decrementCabbages();
             //Launch the cabbage
+            GetComponent<GravityWave>().LaunchCabbage();
             return true;
         }
     }
@@ -63,14 +64,8 @@ public class Cabbages : MonoBehaviour {
         }
         
     }
-<<<<<<< HEAD
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
-*/
-=======
+
+internal class GravityWangravityWave
+{
 }
->>>>>>> 4a54bbfb37a54a94785cf29a4e02831d61e89f70
