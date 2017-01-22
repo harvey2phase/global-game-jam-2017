@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Cabbages : MonoBehaviour {
     public const int MAX_CABBAGES = 5;
-    public int currentCabbages;
+    public int currentCabbages = 3;
 
     public GameObject cabbage;
 
@@ -17,7 +17,6 @@ public class Cabbages : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        currentCabbages = 3;
 	}
     void Update()
     {
@@ -58,7 +57,7 @@ public class Cabbages : MonoBehaviour {
             //Launch the cabbage
             var clone = Instantiate(cabbage, transform.position, Quaternion.Euler(0, 0, 90));//(transform.rotation));
             clone.GetComponent<Rigidbody2D>().AddForce(new Vector2(Speed, 0));
-            Destroy(clone, 1000);
+            Destroy(clone, 2);
 
             return true;
         }
@@ -73,7 +72,6 @@ public class Cabbages : MonoBehaviour {
         else
         {
             incrementCabbages();
-            //add the image??
             return true;
         }
         
