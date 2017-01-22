@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../.Trash/Instantiate.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Earthquake.cs">
     <Files>
-      <File FileName="../.Trash/Instantiate.cs" Line="13" Column="2" />
+      <File FileName="Assets/Earthquake.cs" Line="23" Column="50" />
+      <File FileName="Assets/Scripts/Instantiate.cs" Line="15" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
