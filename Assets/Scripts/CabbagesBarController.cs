@@ -4,23 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CabbagesBarController : MonoBehaviour {
-    public Image[] Cabbages;
-    public Cabbages Player;
-	// Use this for initialization
+    public Image[] CabbageImages;
+    public Cabbages Player; // This is attached to the player
+	
+    // Use this for initialization
 	void Start () {
-        
+        foreach(Image img in CabbageImages)
+        {
+            img.gameObject.SetActive(false);
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        /*int element = (Player.currentCabbages - 1);
-        if (Player.pickupCabbage() && element != (Player.maxCabbages - 1))
+        foreach (Image img in CabbageImages)
         {
-            Cabbages[element].enabled = true;
+            img.gameObject.SetActive(false);
         }
-        else if(Player.throwCabbage())
+  
+        for (int i = 0; i < Player.currentCabbages; i++)
         {
-            Cabbages[element].enabled = false;
-        }*/
+            CabbageImages[i].gameObject.SetActive(true);
+        }
 	}
+
 }
