@@ -13,7 +13,7 @@ public class SpawnCabbage : MonoBehaviour {
         for (int i = 0; i < NumberOfCabbages; i++)
         {
             float coords = Random.value * 280 - 140;
-            Instantiate(CabbagePickUp, new Vector2(coords, 100), Quaternion.identity);
+            Instantiate(CabbagePickUp, new Vector2(coords, 50), Quaternion.identity);
         }
             
     }

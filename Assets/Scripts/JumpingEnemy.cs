@@ -9,8 +9,8 @@ public class JumpingEnemy : BaseEnemy {
 
     public float HissInterval = 10f;
 
-	public Animator aniSlither;
-    public AudioController audio;
+	Animator aniSlither;
+    AudioController audio;
 
     float timeUntilJump;
     float timeUntilHiss;
