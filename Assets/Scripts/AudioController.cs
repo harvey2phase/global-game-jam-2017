@@ -8,6 +8,8 @@ public class AudioController : MonoBehaviour {
 
     public AudioClip SnakeHiss;
 
+    public AudioClip Earthquake;
+
     bool IsMoving;
 
     // Use this for initialization
@@ -35,6 +37,12 @@ public class AudioController : MonoBehaviour {
     public void PlayHurtClip()
     {
         GetComponent<AudioSource>().clip = TurtleHurt;
+        GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayEarthquakeClip()
+    {
+        GetComponent<AudioSource>().clip = Earthquake;
         GetComponent<AudioSource>().Play();
     }
     /*
