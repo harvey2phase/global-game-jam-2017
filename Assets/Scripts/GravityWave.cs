@@ -7,6 +7,7 @@ public class GravityWave : MonoBehaviour {
     private GameObject[] waveSet;
 
     private GameObject wave;
+
     private Transform launchPoint;
     private int currentWave;
     private int maxWaves = 4;
@@ -27,15 +28,8 @@ public class GravityWave : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.F) == true)
-        {
-            var clone = Instantiate(wave, transform.position, Quaternion.Euler(0,0,90));//(transform.rotation));
-            clone.GetComponent<Rigidbody2D>().AddForce(new Vector2(Speed, 0));
-            waveSet[currentWave++] = clone;
-            if (currentWave >= maxWaves) currentWave = 0;
-            Destroy(clone, LifeTime);
-
-        }
+        
+        /*
         for (int i = 0; i < maxWaves; i++)
         {
             if (waveSet[i] != null)
@@ -45,6 +39,16 @@ public class GravityWave : MonoBehaviour {
                 waveSet[i].transform.localScale += new Vector3(GrowPercentage, GrowPercentage, GrowPercentage);
             }
         }
-	}
+        */
+    }
+    public bool LaunchCabbage()
+    {
+        var clone = Instantiate(wave, transform.position, Quaternion.Euler(0, 0, 90));//(transform.rotation));
+        clone.GetComponent<Rigidbody2D>().AddForce(new Vector2(Speed, 0));
+        waveSet[currentWave++] = clone;
+        if (currentWave >= maxWaves) currentWave = 0;
+        Destroy(clone, LifeTime);
+        return true;
+    }
 
 }
