@@ -7,6 +7,9 @@ public class AudioController : MonoBehaviour {
     public AudioClip TurtleHurt;
 
     public AudioClip SnakeHiss;
+    public AudioClip HealthReplenish;
+    public AudioClip ThrowCabbage;
+    public AudioClip CabbagePickup;
 
     public AudioClip Earthquake;
 
@@ -43,6 +46,24 @@ public class AudioController : MonoBehaviour {
     public void PlayEarthquakeClip()
     {
         GetComponent<AudioSource>().clip = Earthquake;
+        GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayHealthReplenishClip()
+    {
+        GetComponent<AudioSource>().clip = HealthReplenish;
+        GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayThrowCabbageClip()
+    {
+        GetComponent<AudioSource>().clip = ThrowCabbage;
+        GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayCabbagePickupClip()
+    {
+        GetComponent<AudioSource>().clip = CabbagePickup;
         GetComponent<AudioSource>().Play();
     }
     /*

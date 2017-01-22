@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: ad58d05f44f962d4aac3d36eac4905b6
-timeCreated: 1485042618
+timeCreated: 1485098345
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - TurtleJumping: {instanceID: 0}
+  - TurtleMoving: {instanceID: 0}
+  - TurtleHurt: {instanceID: 0}
+  - SnakeHiss: {instanceID: 0}
+  - HealthReplenish: {fileID: 8300000, guid: 819bfb900a9f0ce40be7b4e2d2fedd20, type: 3}
+  - Earthquake: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
