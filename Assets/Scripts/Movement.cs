@@ -21,12 +21,14 @@ public class Movement : MonoBehaviour
         grounded = true;
         jumped = false;
         ani = gameObject.GetComponent<Animator>();
+        ani.enabled = false;
         turtle = GetComponent<SpriteRenderer> ();
     }
 
     // Update is called once per frame
     void FixedUpdate ()
     {
+        ani.StopPlayback();
         RaycastHit2D hit = Physics2D.Raycast (transform.position, -Vector2.up, 1000f, 1 << 8);
 
         // grounded?
@@ -44,14 +46,16 @@ public class Movement : MonoBehaviour
 
         // move left
         if (Input.GetKey (KeyCode.LeftArrow)) {
+            ani.enabled = true;
             gameObject.transform.Translate (-.5f, 0, 0);
             turtle.flipX = true;
-        }
-
-        // move right
-        if (Input.GetKey (KeyCode.RightArrow)) {
+        } else if (Input.GetKey (KeyCode.RightArrow)) {
+            ani.enabled = true;
             gameObject.transform.Translate (.5f, 0, 0);
             turtle.flipX = false;
+        } else
+        {
+            ani.enabled = false;
         }
 
         NormalizeSlope ();
