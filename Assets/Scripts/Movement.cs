@@ -24,11 +24,7 @@ public class Movement : MonoBehaviour
 		ani.enabled = false;
 		turtle = GetComponent<SpriteRenderer> ();
 	}
-    
-<<<<<<< HEAD
 
-=======
->>>>>>> 7eca0a581676efb3ccc27e08e950f504b8b338fc
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
@@ -81,7 +77,7 @@ public class Movement : MonoBehaviour
 			}
 		}
 	}
-<<<<<<< HEAD
+
     // Update is called once per frame
     void FixedUpdate () {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1000f, 1 << 8);
@@ -141,6 +137,5 @@ public class Movement : MonoBehaviour
             }
         }
     }
-=======
->>>>>>> 7eca0a581676efb3ccc27e08e950f504b8b338fc
+
 }
