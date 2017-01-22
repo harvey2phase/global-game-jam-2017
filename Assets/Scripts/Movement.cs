@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast (transform.position, -Vector2.up, 1000f, 1 << 8);
 
         // grounded?
-        if (hit.distance < 3f)
+        if (hit.distance < 5f)
             grounded = true;
         else
             grounded = false;
