@@ -1,19 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
+    public int test;
+    public Button restartButton;
     public AudioController audio;
     public PowerUpPanel powerUpPanel;
     public int health; //Health is out of 100
     public bool powerUpIsActive = false;
 
-    public CanvasRenderer LosingScreen;
+    public Canvas LosingScreen;
 
     // Use this for initialization
     void Start() {
         health = 100;
         powerUpIsActive = false;
+        if (restartButton == null)
+        {
+            print("Button could not be located..");
+        }
+        else
+        {
+            print(restartButton.name + " was located!");
+        }
         LosingScreen.gameObject.SetActive(false);
     }
 
@@ -95,8 +107,21 @@ public class Health : MonoBehaviour {
         if (health <= 0)
         {
             LosingScreen.gameObject.SetActive(true);
+
+            restartButton.onClick.AddListener(TaskOnClick);
+            //restartButton.onClick.Invoke();
             Time.timeScale = 0;
         }
         return true;
     }
+
+    void TaskOnClick()
+    {
+        print("Button Clicked!");
+        //int num = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+
+    }
+
 }

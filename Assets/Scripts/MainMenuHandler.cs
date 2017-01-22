@@ -14,7 +14,7 @@ public class MainMenuHandler : MonoBehaviour {
 
     private void TaskOnClick()
     {
-        print("Buton Clicked!");
+        print("Button Clicked!");
         
         //int num = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
