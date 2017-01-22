@@ -9,6 +9,7 @@ public class JumpingEnemy : BaseEnemy {
 
     public float HissInterval = 10f;
 
+	public Animator aniSlither;
     public AudioController audio;
 
     float timeUntilJump;
@@ -22,6 +23,8 @@ public class JumpingEnemy : BaseEnemy {
         timeUntilJump = Random.value * JumpInterval;
         timeUntilHiss = Random.value * HissInterval;
         victim = null;
+		aniSlither = GetComponent<Animator> ();
+		aniSlither.enabled = true;
 
         audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>();
     }
