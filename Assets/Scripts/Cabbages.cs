@@ -6,18 +6,27 @@ using UnityEngine.UI;
 
 public class Cabbages : MonoBehaviour {
     public const int MAX_CABBAGES = 5;
-    public GravityWave gravityWave;
-    public int currentCabbages;
+    public int currentCabbages = 3;
 
-	// Use this for initialization
-	void Start () {
-        currentCabbages = 3;
+    public GameObject cabbage;
+
+    public float CooldownTime = 2;
+    public float LifeTime = 2;
+    public float GrowPercentage = .01f;
+    public int Speed = 1500;
+
+    // Use this for initialization
+    void Start () {
 	}
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             throwCabbage();
+        }
+        if (Input.GetKeyDown(KeyCode.F) == true)
+        {
+            
         }
     }
     public void incrementCabbages()
@@ -44,8 +53,12 @@ public class Cabbages : MonoBehaviour {
         }
         else {
             decrementCabbages();
+
             //Launch the cabbage
-            GetComponent<GravityWave>().LaunchCabbage();
+            var clone = Instantiate(cabbage, transform.position, Quaternion.Euler(0, 0, 90));//(transform.rotation));
+            clone.GetComponent<Rigidbody2D>().AddForce(new Vector2(Speed, 0));
+            Destroy(clone, 2);
+
             return true;
         }
     }
@@ -59,7 +72,6 @@ public class Cabbages : MonoBehaviour {
         else
         {
             incrementCabbages();
-            //add the image??
             return true;
         }
         

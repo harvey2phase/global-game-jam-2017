@@ -79,7 +79,6 @@ public class JumpingEnemy : BaseEnemy {
     {
         if(timeUntilHiss <= 0)
         {
-            //Debug.Log("ayy lmao");
             audio.PlaySnakeClip();
             timeUntilHiss = Random.value * HissInterval;
         }
