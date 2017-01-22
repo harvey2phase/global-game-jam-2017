@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour {
+    public AudioController audio;
     public PowerUpPanel powerUpPanel;
     public int health; //Health is out of 100
     public bool powerUpIsActive = false;
@@ -48,6 +49,7 @@ public class Health : MonoBehaviour {
     public int decrementHealth(int amount = 10)
     {
         health -= amount;
+        audio.PlayHurtClip();
         moderateHealth(); //Make sure health is never less than 0
         return health;
     }

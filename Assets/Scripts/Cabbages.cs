@@ -63,6 +63,7 @@ public class Cabbages : MonoBehaviour {
         }
         
     }
+<<<<<<< HEAD
 	
 	// Update is called once per frame
 	void Update () {
@@ -70,3 +71,6 @@ public class Cabbages : MonoBehaviour {
 	}
 }
 */
+=======
+}
+>>>>>>> 4a54bbfb37a54a94785cf29a4e02831d61e89f70

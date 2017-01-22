@@ -9,6 +9,9 @@ public class Instantiate : MonoBehaviour {
 
     public GameObject prefab;
 
+    public AudioController audio;
+    public CameraShake camera;
+
     public int NumberOfStartInstances;
 
     void Start() {
@@ -22,6 +25,8 @@ public class Instantiate : MonoBehaviour {
         currentTime -= Time.deltaTime;
 
         if (currentTime < 0) {
+            audio.PlayEarthquakeClip();
+            camera.shake(1);
             Instantiate(prefab, gameObject.transform.position, Quaternion.identity);
             currentTime = interval;
         }

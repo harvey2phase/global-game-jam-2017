@@ -45,11 +45,6 @@ public class CameraShake : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.P) == true)
-        {
-            shake(1);
-        }
-
 		if (isShaking == true)
         {
             angle = (Mathf.Sin((startTime - Time.time)*speed))*severity;
