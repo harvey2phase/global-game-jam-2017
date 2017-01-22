@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour {
 
     public float JumpForce;
 
+    public AudioController audio;
+
     SpriteRenderer turtle;
 
     // Use this for initialization
@@ -32,18 +34,23 @@ public class Movement : MonoBehaviour {
 
         // jump
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
-			GetComponent<Rigidbody2D> ().AddForce ((Vector2.up * JumpForce));
+        {
+            GetComponent<Rigidbody2D>().AddForce((Vector2.up * JumpForce));
+            audio.PlayJumpClip();
+        }
 
         // move left
         if (Input.GetKey(KeyCode.LeftArrow)) {
             gameObject.transform.Translate(-.5f, 0, 0);
             turtle.flipX = true;
+            //audio.StartMoveClip();
         }
 
         // move right
         if (Input.GetKey(KeyCode.RightArrow)) {
             gameObject.transform.Translate(.5f, 0, 0);
             turtle.flipX = false;
+            //audio.StartMoveClip();
         }
 
         NormalizeSlope();

@@ -7,7 +7,12 @@ public class JumpingEnemy : BaseEnemy {
 
     public float JumpInterval = 5f;
 
+    public float HissInterval = 10f;
+
+    public AudioController audio;
+
     float timeUntilJump;
+    float timeUntilHiss;
 
     bool grounded;
 
@@ -15,7 +20,10 @@ public class JumpingEnemy : BaseEnemy {
     void Start () {
         grounded = true;
         timeUntilJump = Random.value * JumpInterval;
+        timeUntilHiss = Random.value * HissInterval;
         victim = null;
+
+        audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>();
     }
     
     // Update is called once per frame
@@ -32,7 +40,10 @@ public class JumpingEnemy : BaseEnemy {
 
         Attack();
 
+        Hiss();
+
         timeUntilJump -= Time.deltaTime;
+        timeUntilHiss -= Time.deltaTime;
 
         NormalizeSlope();
 
@@ -61,6 +72,16 @@ public class JumpingEnemy : BaseEnemy {
         {
             GetComponent<Rigidbody2D>().AddForce(transform.up * 2000);
             timeUntilJump = Random.value * JumpInterval;
+        }
+    }
+
+    void Hiss()
+    {
+        if(timeUntilHiss <= 0)
+        {
+            Debug.Log("ayy lmao");
+            audio.PlaySnakeClip();
+            timeUntilHiss = Random.value * HissInterval;
         }
     }
 
