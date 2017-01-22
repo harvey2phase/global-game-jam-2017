@@ -25,7 +25,7 @@ public class WaveAttack : MonoBehaviour {
         IsFiring = false;
         PositionOnFire = transform.position;
 
-        circle.transform.localScale = new Vector3(Range, Range, Range);
+        circle.transform.localScale = new Vector3(Range / 10, Range / 10, Range);
         circle.gameObject.SetActive(false);
     }
     

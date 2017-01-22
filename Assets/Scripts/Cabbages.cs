@@ -62,9 +62,4 @@ public class Cabbages : MonoBehaviour {
         }
         
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
