@@ -10,13 +10,9 @@ public class Movement : MonoBehaviour
 	public float JumpForce;
 	public Animation ani;
 
-<<<<<<< HEAD
 	SpriteRenderer turtle;
-=======
-    public AudioController audio;
 
-    SpriteRenderer turtle;
->>>>>>> 4a54bbfb37a54a94785cf29a4e02831d61e89f70
+    public AudioController audio;
 
 	// Use this for initialization
 	void Start ()
@@ -28,7 +24,7 @@ public class Movement : MonoBehaviour
 		turtle = GetComponent<SpriteRenderer> ();
 	}
     
-<<<<<<< HEAD
+
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
@@ -81,7 +77,6 @@ public class Movement : MonoBehaviour
 			}
 		}
 	}
-=======
     // Update is called once per frame
     void FixedUpdate () {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1000f, 1 << 8);
@@ -141,5 +136,4 @@ public class Movement : MonoBehaviour
             }
         }
     }
->>>>>>> 4a54bbfb37a54a94785cf29a4e02831d61e89f70
 }
